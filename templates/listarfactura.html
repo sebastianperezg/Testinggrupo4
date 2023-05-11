@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+    <p></p>
+<h1>LISTADO DE FACTURAS</h1>
+    <p></p>
+    <div class="row col-2 justify-content-end mb-2 pr-0">
+        <a class="btn btn-success col-md-12" href="{% url 'registrofactura' %}">nueva factura</a>
+    </div>
+    <p></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">id_factura</th>
+      <th scope="col">fechaemision</th>
+      <th scope="col">id_cliente</th>
+        <th scope="col">estado</th>
+        <th scope="col">total</th>
+          <th scope="col">editar</th>
+          <th scope="col">eliminar</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for factura in factura1 %}
+    <tr>
+      <th scope="row">{{ factura.id }}</th>
+      <td>{{ factura.id_factura }}</td>
+      <td>{{ factura.fecha_emision }}</td>
+      <td>{{ factura.id_cliente }}</td>
+        <td>{{ factura.estado }}</td>
+        <td>{{ factura.total }}</td>
+    <td><a class="btn btn-warning" href="{% url 'editfactura' factura.id %}">editar</a> </td>
+       <td><a class="btn btn-danger" href="{% url 'eliminarfactura' factura.id %}">eliminar</a> </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

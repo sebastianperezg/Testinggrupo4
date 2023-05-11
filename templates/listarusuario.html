@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+    <p></p>
+<h1>LISTADO DE usuarios</h1>
+    <p></p>
+    <div class="row col-2 justify-content-end mb-2 pr-0">
+        <a class="btn btn-success col-md-12" href="{% url 'registrousuario' %}">nueva usuario</a>
+    </div>
+    <p></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">id_usuario</th>
+      <th scope="col">nombre</th>
+      <th scope="col">contraseña</th>
+        <th scope="col">correo</th>
+        <th scope="col">rol</th>
+          <th scope="col">editar</th>
+          <th scope="col">eliminar</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for usuario in usuario1 %}
+    <tr>
+      <th scope="row">{{ usuario.id }}</th>
+      <td>{{ usuario.id_usuario }}</td>
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.contraseña }}</td>
+        <td>{{ usuario.correo }}</td>
+        <td>{{ usuario.rol }}</td>
+    <td><a class="btn btn-warning" href="{% url 'editusuario' usuario.id %}">editar</a> </td>
+       <td><a class="btn btn-danger" href="{% url 'eliminarusuario' usuario.id %}">eliminar</a> </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

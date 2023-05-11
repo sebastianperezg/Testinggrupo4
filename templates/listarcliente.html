@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block content %}
+    <p></p>
+<h1>LISTADO DE CLIENTES</h1>
+    <p></p>
+    <div class="row col-2 justify-content-end mb-2 pr-0">
+        <a class="btn btn-success col-md-12" href="{% url 'registrocliente' %}">nueva cliente</a>
+    </div>
+    <p></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">id_cliente</th>
+      <th scope="col">dni</th>
+      <th scope="col">nombre</th>
+        <th scope="col">ruc</th>
+        <th scope="col">direccion</th>
+         <th scope="col">correo</th>
+        <th scope="col">telefono</th>
+          <th scope="col">editar</th>
+          <th scope="col">eliminar</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for cliente in cliente1 %}
+    <tr>
+      <th scope="row">{{ cliente.id }}</th>
+      <td>{{ cliente.id_cliente }}</td>
+      <td>{{ cliente.dni }}</td>
+      <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.ruc_cliente }}</td>
+        <td>{{ cliente.direccion }}</td>
+            <td>{{ cliente.correo }}</td>
+        <td>{{ cliente.telefono }}</td>
+    <td><a class="btn btn-warning" href="{% url 'editcliente' cliente.id %}">editar</a> </td>
+       <td><a class="btn btn-danger" href="{% url 'eliminarcliente' cliente.id %}">eliminar</a> </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

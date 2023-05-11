@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_utils %}
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            algo esta mal
+        </div>
+    {% endif %}
+    <h1>Registro usuario</h1>
+
+    <form action="{% url 'guardarusuario' %}" method="post">
+         {% csrf_token %}
+         {% if mensaje %}
+              <div class="alert alert-success" role="alert">
+                  usuario guardada
+              </div>
+         {% endif %}
+
+        {{form | crispy}}
+
+
+        <button type="submit" class="btn btn-success">guardar</button>
+    </form>
+{% endblock %}
